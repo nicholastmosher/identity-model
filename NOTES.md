@@ -37,6 +37,64 @@
   be able to sign WASM modules to enable sending functions to peers who have granted you
   the ability to do so.
 
+# March 5 2025
+
+- Create an event log for the purpose of delivering a security report
+  at the beginning of each day. The app would deliver one notification
+  each day, and it should be a summary of all peers that have participated
+  in a backup of your peer's designated replicate-me data. The app presents
+  a view that's a timeline of confirmed synchronization events with your
+  trusted replication circle. This gives you a daily feed of confirming
+  backups have been completed successfully. The objective would be to
+  get people in the habit of being backup-conscious, because a genuine
+  alternative to cloud software means that we'll need to set new
+  expectations around digital security and data protection. I believe
+  many people use cloud backup services because there's no better way yet
+  to protect their data with such ease and confidence.
+
+- Replicate-me data would be like albums or other directories of data that
+  you ask trusted peers to keep a copy of for you. With a given peer, exchange
+  an agreed upon amount of disk space to dedicate to storing that peer's data,
+  their replicate-me data.
+
+# March 5, 2025
+
+- Choosing a concrete application as a basis for sketching the requirements for identity, data ownership
+  and control, and access patterns. Using a “shared photo albums” app as the first use-case/case-study.
+- Requirements for a photo sharing application:
+  - Need some way to grant specific devices access to specific subsets of photos
+  - Need a portable and ideally agnostic/extensible model for identities and data ownership
+  - Data model needs to express the ability to employ redundancy among a trusted pool of devices or members
+  - Distinguish the notion of “you can back up my data but not read it” vs “I’m sharing data that you can
+    also read and/or write”
+  - Potentially need a multi-level authority scheme, so for example ownership of a photo is expressed
+    distinctly from who (group of participants) is allowed to read/write. “Writes” here may refer to the
+    ability to reshare with other groups or to publish derivations.
+  - A user should be able to create distinct profiles that may be used to participate in different spaces.
+    It should not be possible to infer that one profile is controlled by the same person/key/authority as
+    another profile. Motivation: have one profile for family spaces and another unassociated profile for
+    other spaces, they should not be externally identifiable as being under the same control.
+  - Some notion of “spaces” needs to be first-class, this would put access control front-and center, any
+    application participating in a “space” with multiple participants would highlight that the data in that
+    space is shared. May need some way to add or remove people from a group which may involve some dance with
+    cryptographic keys rolling or such.
+  - It should be possible to have a photo in a private space and share it to a public space. This may present
+    as a capability granted from one space to another.
+  - Transitive vs non-transitive capabilities, such as the capability for somebody to “hold” an encrypted
+    backup of some of my data, which they may subsequently delegate to others to increase replication. Or
+    non-transitive such as read access.
+  - Levels of access: Read (can view file contents), Hold (knows the file exists and may replicate but not
+    view the data), or Hidden (does not know the data exists at all).
+  - Example: I share a folder of photos or documents with a group. The underlying operation would be to create
+    a shared access key/identity for the group, then sign a capability for the chosen files that grants that
+    group the ability to read/hold/etc. that data.
+
+Next steps:
+
+- Attempt to instantiate the Willow protocol and capabilities to express operations to fulfill the needs
+  of a photo sharing app
+- Think about acceptance tests for various scenarios
+
 # Feb 6 2025
 
 Project Kickoff!
@@ -96,61 +154,3 @@ Project Brainstorming/Ideas
   in a namespace, then synchronizing those elements among the appropriate pool of peers (governed
   by the identity system that I’d like to create, which would be a first-class cryptographic trust
   toolkit).
-
-# March 5, 2025
-
-- Choosing a concrete application as a basis for sketching the requirements for identity, data ownership
-  and control, and access patterns. Using a “shared photo albums” app as the first use-case/case-study.
-- Requirements for a photo sharing application:
-  - Need some way to grant specific devices access to specific subsets of photos
-  - Need a portable and ideally agnostic/extensible model for identities and data ownership
-  - Data model needs to express the ability to employ redundancy among a trusted pool of devices or members
-  - Distinguish the notion of “you can back up my data but not read it” vs “I’m sharing data that you can
-    also read and/or write”
-  - Potentially need a multi-level authority scheme, so for example ownership of a photo is expressed
-    distinctly from who (group of participants) is allowed to read/write. “Writes” here may refer to the
-    ability to reshare with other groups or to publish derivations.
-  - A user should be able to create distinct profiles that may be used to participate in different spaces.
-    It should not be possible to infer that one profile is controlled by the same person/key/authority as
-    another profile. Motivation: have one profile for family spaces and another unassociated profile for
-    other spaces, they should not be externally identifiable as being under the same control.
-  - Some notion of “spaces” needs to be first-class, this would put access control front-and center, any
-    application participating in a “space” with multiple participants would highlight that the data in that
-    space is shared. May need some way to add or remove people from a group which may involve some dance with
-    cryptographic keys rolling or such.
-  - It should be possible to have a photo in a private space and share it to a public space. This may present
-    as a capability granted from one space to another.
-  - Transitive vs non-transitive capabilities, such as the capability for somebody to “hold” an encrypted
-    backup of some of my data, which they may subsequently delegate to others to increase replication. Or
-    non-transitive such as read access.
-  - Levels of access: Read (can view file contents), Hold (knows the file exists and may replicate but not
-    view the data), or Hidden (does not know the data exists at all).
-  - Example: I share a folder of photos or documents with a group. The underlying operation would be to create
-    a shared access key/identity for the group, then sign a capability for the chosen files that grants that
-    group the ability to read/hold/etc. that data.
-
-Next steps:
-
-- Attempt to instantiate the Willow protocol and capabilities to express operations to fulfill the needs
-  of a photo sharing app
-- Think about acceptance tests for various scenarios
-
-# March 5 2025
-
-- Create an event log for the purpose of delivering a security report
-  at the beginning of each day. The app would deliver one notification
-  each day, and it should be a summary of all peers that have participated
-  in a backup of your peer's designated replicate-me data. The app presents
-  a view that's a timeline of confirmed synchronization events with your
-  trusted replication circle. This gives you a daily feed of confirming
-  backups have been completed successfully. The objective would be to
-  get people in the habit of being backup-conscious, because a genuine
-  alternative to cloud software means that we'll need to set new
-  expectations around digital security and data protection. I believe
-  many people use cloud backup services because there's no better way yet
-  to protect their data with such ease and confidence.
-
-- Replicate-me data would be like albums or other directories of data that
-  you ask trusted peers to keep a copy of for you. With a given peer, exchange
-  an agreed upon amount of disk space to dedicate to storing that peer's data,
-  their replicate-me data.
