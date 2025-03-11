@@ -1,0 +1,15 @@
+[workspace]
+members = ["crates/*"]
+package.license = "MIT OR Apache-2.0"
+
+[profile]
+
+[profile.wasm-dev]
+inherits = "dev"
+opt-level = 1
+
+[profile.server-dev]
+inherits = "dev"
+
+[profile.android-dev]
+inherits = "dev"
