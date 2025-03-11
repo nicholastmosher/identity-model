@@ -1,3 +1,42 @@
+# March 10 2025
+
+- I'm thinking more about how this could potentially be described as the foundations for
+  a peer-to-peer browser. A browser is a program, and it performs tasks such as rendering
+  content to a display, handling user input, performing network calls to fetch content,
+  and storing some data locally.
+
+- Important to have a DSL that helps to express the intentions of data and applications,
+  and probably an interface hand-crafted for communicating key concepts to users.
+  Ultimately I think I need to create a very simple domain model that would be easy to
+  explain to average people. Find the right words to tell them that they deserve to feel
+  confident that their data is kept private when they expect, and give them a clear mental
+  model for how applications are allowed to ask to be a guest in your home but that they
+  must prove to you that they are trustworthy by showing exactly how they're planning to
+  use your data.
+
+- Idea: A visualization that is a timeline? A scrolling feed, but with content backed by
+  Willow/Meadowcap capabilities and displayed in a peer to peer programmable environment.
+  Programmable environment would mean that not only could you post content, but also
+  develop applications that can render a view onto your feed, such as games or documents
+  or whatever else. Activity would be annotated with markings that clearly show which
+  of your namespaces or subspaces data is coming from.
+
+- Less feasible but fun idea: Imagine the timeline feed is a 3D cylinder of
+  unbounded length, and the cross-section is a circular index of the data that
+  was touched at a shown time. At a given range in the timeline, render planes that
+  pass from the radius of the cylinder, like the pages of a notebook. Wedges around a
+  span of the cylinder represent namespaces or subspaces that witnessed events at that
+  time, such as reads and writes.
+
+- Considering the global contexts pattern archetype such as seen with Bevy, GPUI, etc.,
+  I wonder if it's possible to create an interface (DSL) that exposes the same application-
+  building tools to developers working with both static and dynamic plugins. For example,
+  by having a well-defined data model (e.g. something backed by Willow), we could create
+  a programmatic DSL (think Bevy) that exposes a global-context-builder type of pattern
+  but which is equally capable both inside and outside a WASM boundary. Capabilities may
+  be able to sign WASM modules to enable sending functions to peers who have granted you
+  the ability to do so.
+
 # Feb 6 2025
 
 Project Kickoff!
