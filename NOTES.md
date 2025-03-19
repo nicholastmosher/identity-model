@@ -1,3 +1,51 @@
+# March 19 2025
+
+- Get hands-on and familiar with `iroh-willow` since that will be the groundwork for what I want to build.
+
+- Discovery (user discovery) is going to be a key aspect of the system. For example, can I associate a
+  bluesky handle with a public key that has certain access within the willow space?
+
+- Focus should be on tight-knit trusted networks of peers rather than large open groups of peers
+  (I think Willow can do both).
+
+- Question to solve: When adding or removing members from a group (a “space”? subspace?), how does
+  encryption work? Current thinking is generate a shared key among members, then upon adding or
+  removing members generate a new key. I need to figure out how Willow approaches this and see
+  if it’s sufficient.
+
+- Need to think about access control, I know Read/Write are first-class to Willow. Considerations
+  include “can somebody see a particular photo? Can somebody even know about the existence of a photo
+  or album?” These may be able to be expressed via the existing Read/Write structure
+
+- Goal: Be agnostic and not tied to any particular p2p system.
+
+- Need to try to build something with iroh-willow to see how things work in practice. Need to try out
+  defining capabilities, setting up some data in a namespace, reading/writing, etc. Then start to
+  imagine how that might get expanded to include another p2p platform such as libp2p after having
+  some experience.
+
+- Consider consistency, such as removing a user from an album and then adding a photo to an album,
+  is it guaranteed they won’t see the new photo?
+
+P2p browser ideas:
+
+- Visualization / report of data sync between peers. For example in a group committed to backing up
+  each others’ data, you may want to know who you synced with in the last day. Perhaps break
+  this down by application, so you can also see which peers to your photo-sharing app got the latest
+  updates from your shared album.
+
+# March 18 2025
+
+- After doing more research, I’ve learned that the `Iroh` project is actually run by the
+  same people as `Willow` (under the “Earthstar” organization), and that they already
+  have a project called `iroh-willow` which instantiates Willow using the Iroh p2p primitives.
+
+- I think I’ll want to use this as a starting point for this identity project. I expect that
+  crafting capabilities will be much like crafting any other programming API, and I’ll need
+  to just dig in and learn how it’s done. Depending on how high-level or low-level it is, I’ll
+  need to figure out what primitives I’m working with as well as what interface I actually
+  want to provide
+
 # March 10 2025
 
 - I'm thinking more about how this could potentially be described as the foundations for
